@@ -1,0 +1,135 @@
+body {
+  background: #00a6d8; }
+
+.container {
+  width: 1300px;
+  height: 705px;
+  margin: 0;
+  background: url("../img/homepage.jpg") no-repeat; }
+
+.homepage-top {
+  height: 175px;
+  padding: 30px 150px; }
+  .homepage-top .logo {
+    float: right;
+    margin: 100px 143px 0 0; }
+  .homepage-top img {
+    width: 200px;
+    height: 45px;
+    margin: 10px 0; }
+  .homepage-top .logo-title {
+    font-size: 29px;
+    color: #fff; }
+
+.login {
+  width: 400px;
+  height: 353px;
+  background: #d9f1f9;
+  margin-top: 85px;
+  margin-left: 790px; }
+  .login .title {
+    display: inline-block;
+    width: 100%;
+    margin-top: 50px;
+    color: #41c0e6;
+    text-align: center; }
+  .login .block {
+    width: 250px;
+    margin: 35px auto; }
+    .login .block .form-control {
+      margin-bottom: 15px; }
+    .login .block label {
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 20px; }
+
+.form-control {
+  height: 31px;
+  padding: 4px 12px;
+  border: 1px solid #e2e2e2;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  font-size: 13px; }
+
+.form-control:focus {
+  border-color: #41c0e6 !important; }
+
+.btn {
+  display: inline-block;
+  height: 31px;
+  margin-bottom: 2px;
+  border: none;
+  padding: 8px 15px;
+  background: #41c0e6;
+  font-size: 14px;
+  line-height: 1;
+  color: #fff;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px; }
+  .btn:hover {
+    background: #3cb1d4;
+    color: #fff;
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); }
+  .btn:active {
+    background: #41c0e6;
+    color: #fff;
+    -webkit-box-shadow: 0 0 8px rgba(59, 175, 248, 0.7);
+    -moz-box-shadow: 0 0 8px rgba(59, 175, 248, 0.7);
+    box-shadow: 0 0 8px rgba(59, 175, 248, 0.7); }
+  .btn:focus {
+    background: #41c0e6;
+    color: #fff; }
+  .btn[disabled] {
+    background: #d7d7d7;
+    color: #fff; }
+
+.btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus {
+  outline: none; }
+
+.icheckbox_square,
+.iradio_square {
+  display: inline-block;
+  *display: inline;
+  vertical-align: -2px;
+  margin-right: 10px;
+  padding: 0;
+  width: 15px;
+  height: 15px;
+  background: url("../img/icheck@1x.png") no-repeat 0 0;
+  border: none;
+  cursor: pointer; }
+
+@media (-o-min-device-pixel-ratio: 5 / 4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi), (min-resolution: 1.25dppx) {
+  .icheckbox_square, .iradio_square {
+    background: url("../img/icheck@2x.png") no-repeat;
+    -webkit-background-size: 185px 15px;
+    background-size: 185px 15px; } }
+.icheckbox_square {
+  background-position: 0 0; }
+  .icheckbox_square.hover {
+    background-position: -17px 0; }
+  .icheckbox_square.checked {
+    background-position: -34px 0; }
+  .icheckbox_square.disabled {
+    background-position: -51px 0;
+    cursor: default; }
+  .icheckbox_square.checked.disabled {
+    background-position: -68px 0; }
+  .icheckbox_square.indeterminate {
+    background-position: -170px 0; }
+
+.iradio_square {
+  background-position: -85px 0; }
+  .iradio_square.hover {
+    background-position: -102px 0; }
+  .iradio_square.checked {
+    background-position: -119px 0; }
+  .iradio_square.disabled {
+    background-position: -136px 0;
+    cursor: default; }
+  .iradio_square.checked.disabled {
+    background-position: -153px 0; }

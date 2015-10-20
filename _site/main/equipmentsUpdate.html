@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- 启用360极速模式 -->
+    <meta name="renderer" content="webkit" />
+
+    <title>云端管理平台</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../css/font-awesome/css/font-awesome.css"/>
+    <link rel="stylesheet" href="../css/style.css"/>
+    <link rel="stylesheet" href="../css/plugins/datapicker/datepicker3.css"/>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/m3script.css">
+
+    <script type="text/javascript" src="../script/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="../script/jquery.cookie-1.4.1.min.js"></script>
+    <script type="text/javascript" src="../script/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../script/plugins/datapicker/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="../script/plugins/icheck/icheck.min.js"></script>
+    <script type="text/javascript" src="../script/jquery.tree.js"></script>
+    <script type="text/javascript" src="../script/control.js"></script>
+    <script type="text/javascript" src="../script/m3script.js"></script>
+</head>
+
+  <body class="fixed-sidebar">
+
+    
+<header class="header">
+  <!-- logo -->
+  <a class="logo" href="../index.html">
+    <img src="../img/logo.png" alt="CLOUD"/>
+    <div class="logo-title">云&nbsp;端&nbsp;管&nbsp;理&nbsp;平&nbsp;台</div>
+  </a>
+
+  <div class="header-nav">
+    
+
+    <!-- 右侧工具：用户、退出 -->
+  </div>
+  <div class="tools">
+      <!-- 退出 -->
+      <div class="user-logout">
+        <a href="../index.html">
+          <i class="fa fa-sign-out"></i>退出
+        </a>
+      </div>
+
+      <!-- 用户 -->
+      <div class="user-login">
+        <a href="userConfig.html">
+          <i class="fa fa-user"></i><span>admin</span>
+        </a>
+      </div>
+
+    </div>
+
+</header>
+
+    <!-- 中间容器 -->
+    <div class="ui-container">
+      <div id="main">
+        <div class="header-banner">
+    <div class="banner-tab"><a href="netMonitor.html">网络监控</a></div>
+    <div class="banner-tab active">
+        <a href="myEquipments.html">我的设备</a>
+        <ul class="banner-block">
+            <a href="equipmentGroup.html"><li>设备组</li></a>
+            <a href="equipmentsUpdate.html"><li>固件升级</li></a>
+        </ul>
+    </div>
+    <div class="banner-tab">
+        <a href="wirelessConfig.html">无线配置</a>
+        <ul class="banner-block">
+            <a href="wirelessConfig.html"><li>SSID</li></a>
+        </ul>
+    </div>
+    <div class="banner-tab"><a href="inventory.html">Inventory</a></div>
+</div>
+<div class="main-content">
+    <div class="current-locate">
+        <label><i class="fa fa-home"></i>当前位置：</label>
+        <ul class="breadcrumb">
+            <li><a href="myEquipments.html">我的设备</a></li>
+            <li class="active">固件升级</li>
+        </ul>
+    </div>
+    <div class="equipments-table w1000">
+        <div class="table-head">
+            <span>固件升级</span>
+            <a href="softwareUploading.html" class="pull-right">[&nbsp;+&nbsp;]</a>
+        </div>
+        <table class="table mytable table-hover">
+            <thead>
+                <tr>
+                    <th>版本号</th>
+                    <th>文件名</th>
+                    <th class="text-center">操作</th>
+                </tr>
+            </thead>
+            <tbody id="MyEquipTBody">
+               <!--  <tr>
+                    <td>AP1.01</td>
+                    <td>Ap101.bin</td>
+                    <td class="table-control">
+                        <a href="#">修改</a>
+                        <a href="#">删除</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>LSW1.02</td>
+                    <td>Lsw102.bin</td>
+                    <td class="table-control">
+                        <a href="#">修改</a>
+                        <a href="#">删除</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>AP1.02</td>
+                    <td>Ap102.bin</td>
+                    <td class="table-control">
+                        <a href="#">修改</a>
+                        <a href="#">删除</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>AP1.03</td>
+                    <td>Ap103.bin</td>
+                    <td class="table-control">
+                        <a href="#">修改</a>
+                        <a href="#">删除</a>
+                    </td>
+                </tr> -->
+            </tbody>
+        </table>
+        
+            <!--分页-->
+          <div class="page" >
+         
+          
+            <ul class="pagination">
+              <div id="pagination" class="paginate"></div>
+            </ul>
+           
+          </div>
+    </div>
+</div>
+      </div>
+    </div>
+    
+
+
+<div class="page-bottom">
+    <div class="status pull-left">系统正常</div>
+    <div class="locate-time pull-right">2015-08-27 22:58</div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+  //show current tiem automatically
+  setInterval("showCurrentTime()", 1000); 
+  //get total counts of the equip group tables
+  //notice need to enter right url,but "www.baidu.com" is a just test
+  generateTablesCounts("www.equipgrade.com"); 
+
+
+});
+/**
+ * set table data by pageIndex and pageSize
+ */
+ function queryByPageIndexAndSetTableValues(pageIndex,pageSize){
+  var queryString="pageIndex="+pageIndex+"&pageSize="+pageSize;
+ // alert("[equipmentGroup.html]query string is "+queryString);
+  $.ajax({ 
+    type:"GET", 
+    url: "../json/hardwareUpgrade.json?"+queryString, 
+    dataType:"json", 
+    contentType:"application/json",
+    beforeSend: function(request){
+        //alert("request is "+request); 
+      }, 
+      success:function(data){ 
+          //tbody content
+          var tbodyContent="";
+          $.each(data.data, function(index, content)
+          { 
+            //iterate the array and construct the tbody content,
+
+            var hrefLocation="softwareModify.html?id="+content.id+"&desc="+content.desc;
+            // alert("equipmentGroup is"+hrefLocation);
+            tbodyContent+="<tr><td>"+content.version+"</td><td>"+content.name+"</td><td class=\"table-control\"><a href="+hrefLocation+">修改</a><a href=\"javascript:void(0);\" onclick=\"deleteHw(this)\">删除</a></td></tr>";
+          });
+          $("#MyEquipTBody").empty();
+          $("#MyEquipTBody").append(tbodyContent);
+        },
+        error:function(a,b,c){
+            //let it pass ,in order to test app.
+            var errorMsg="get table data by ocurrs error,"+"a="+a+";b="+b+";c="+c;
+            alert(errorMsg);
+            //location.href = 'main/netMonitor.html';
+
+          } 
+        }); 
+
+
+
+}
+
+</script>
+</body>
+
+</html>

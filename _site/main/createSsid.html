@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- 启用360极速模式 -->
+    <meta name="renderer" content="webkit" />
+
+    <title>云端管理平台</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../css/font-awesome/css/font-awesome.css"/>
+    <link rel="stylesheet" href="../css/style.css"/>
+    <link rel="stylesheet" href="../css/plugins/datapicker/datepicker3.css"/>
+    <link rel="stylesheet" href="../css/main.css">
+
+    <script type="text/javascript" src="../script/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="../script/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../script/plugins/datapicker/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="../script/plugins/icheck/icheck.min.js"></script>
+    <script type="text/javascript" src="../script/jquery.tree.js"></script>
+    <script type="text/javascript" src="../script/control.js"></script>
+    <script type="text/javascript" src="../script/m3script.js"></script>
+    <script type="text/javascript" src="../script/jquery.query-2.1.7.js"></script>
+</head>
+
+
+<body class="fixed-sidebar">
+
+
+    <header class="header">
+      <!-- logo -->
+      <a class="logo" href="../index.html">
+        <img src="../img/logo.png" alt="CLOUD"/>
+        <div class="logo-title">云&nbsp;端&nbsp;管&nbsp;理&nbsp;平&nbsp;台</div>
+    </a>
+
+    <div class="header-nav">
+
+
+        <!-- 右侧工具：用户、退出 -->
+    </div>
+    <div class="tools">
+      <!-- 退出 -->
+      <div class="user-logout">
+        <a href="../index.html">
+          <i class="fa fa-sign-out"></i>退出
+      </a>
+  </div>
+
+  <!-- 用户 -->
+  <div class="user-login">
+    <a href="userConfig.html">
+      <i class="fa fa-user"></i><span>admin</span>
+  </a>
+</div>
+
+</div>
+
+</header>
+
+<!-- 中间容器 -->
+<div class="ui-container">
+  <div id="main">
+    <div class="header-banner">
+        <div class="banner-tab"><a href="netMonitor.html">网络监控</a></div>
+        <div class="banner-tab ">
+            <a href="myEquipments.html">我的设备</a>
+            <ul class="banner-block">
+                <a href="equipmentGroup.html"><li>设备组</li></a>
+                <a href="equipmentsUpdate.html"><li>固件升级</li></a>
+            </ul>
+        </div>
+        <div class="banner-tab active">
+            <a href="wirelessConfig.html">无线配置</a>
+            <ul class="banner-block">
+                <a href="wirelessConfig.html"><li>SSID</li></a>
+            </ul>
+        </div>
+        <div class="banner-tab"><a href="inventory.html">Inventory</a></div>
+    </div>
+    <div class="main-content">
+        <div class="current-locate">
+            <label><i class="fa fa-home"></i>当前位置：</label>
+            <ul class="breadcrumb">
+                <li><a href="wirelessConfig.html">无线配置</a></li>
+                <li class="active">添加SSID</li>
+            </ul>
+        </div>
+        <div class="create-equipments">
+            <div class="create-header">添加SSID</div>
+            <div class="create-body">
+                <form class="form-horizontal whole-form">
+                    <div class="form-part form-big">
+                        <div class="form-group require-group">
+                            <label class="control-label">英文SSID</label>
+                            <div class="controls">
+                                <input type="text" class="form-control" id="ssid_en">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">中文SSID</label>
+                            <div class="controls">
+                                <input type="text" class="form-control" id="ssid_zh">
+                            </div>
+                        </div>
+                        <div class="form-group require-group">
+                            <label class="control-label">无线接入密码</label>
+                            <div class="controls">
+                                <div class="radio-inline-div">
+                                    <label cl><input type="radio" name="need-or-not" class="need-code" checked="checked">需要</label>
+                                    <label cl><input type="radio" name="need-or-not">不需要</label>
+                                </div>
+                                <input type="text" class="form-control" id="key">
+                            </div>
+                        </div>
+                        <div class="form-group require-group">
+                            <label class="control-label">用户隔离</label>
+                            <div class="controls">
+                                <div class="radio-inline-div">
+                                    <label cl><input type="radio" checked="checked" class="isolate-choice">需要</label>
+                                    <label cl><input type="radio" >不需要</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group require-group">
+                            <label class="control-label">生效频段</label>
+                            <div class="controls">
+                                <div class="radio-inline-div">
+                                    <label cl><input type="checkbox" name="frequency">2.4GHz</label>
+                                    <label cl><input type="checkbox" name="frequency">5GHz</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">生效设备</label>
+                            <div class="controls radio-inline-div">
+                                <label ><input type="checkbox" name="equipments" id="applytoall">所有设备</label>
+                            </div>
+                        </div>
+                        <div class="btn-groups">
+                            <input type="button" class="btn" value="保&emsp;存">
+                            <input type="button" class="btn" value="取&emsp;消">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+<div class="page-bottom">
+    <div class="status pull-left">系统正常</div>
+    <div class="locate-time pull-right">2015-08-27 22:58</div>
+</div>
+<script type="text/javascript">
+$(function(){
+  //show current tiem automatically
+  setInterval("showCurrentTime()", 1000); 
+  //get parameter value from GET Request
+  var ssid_en = $.query.get('ssid_en');
+  var ssid_zh = $.query.get('ssid_zh');
+  var isolate = $.query.get('isolate');
+  var band = $.query.get('band');
+  var key = $.query.get('key');
+  $("#ssid_en").val(ssid_en);
+  $("#ssid_zh").val(ssid_zh);
+  $("#key").val(key);
+  if(isolate){
+    alert("isolate ok.");
+  }else{
+     alert("isolate error.");
+  }
+  
+   //password encrypt 
+   $('.need-code').on('ifToggled',function() {
+    var $this = $(this);
+    var $formControl = $(this).closest('.controls').find('.form-control');
+    if($this.is(':checked')) {
+        $formControl.removeClass('hide');
+    } else {
+        $formControl.addClass('hide');
+    }
+})
+
+   //alert("equipGroupName is "+equipGroupName);
+   $(".isolate-choice").on("onclick",function(){
+    alert("OK");
+});
+});
+
+
+</script>
+</body>
+
+</html>

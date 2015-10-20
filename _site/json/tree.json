@@ -1,0 +1,36 @@
+{
+  "root": [
+    {
+      "id": 1,
+      "name": "所有设备",
+      "children": [
+        {
+          "id": 4,
+          "name": "SW1",
+          "children": [
+            {
+              "id": 7,
+              "name": "SW3"
+            },
+            {
+              "id": 8,
+              "name": "SW4"
+            },
+            {
+              "id": 9,
+              "name": "SW5"
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "name": "SW2"
+        },
+        {
+          "id": 6,
+          "name": "SW3"
+        }
+      ]
+    }
+  ]
+}

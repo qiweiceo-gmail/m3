@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <!-- 启用360极速模式 -->
+  <meta name="renderer" content="webkit" />
+
+  <title>云端管理平台</title>
+  <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="../css/font-awesome/css/font-awesome.css"/>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="stylesheet" href="../css/plugins/datapicker/datepicker3.css"/>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/m3script.css">
+
+  <script type="text/javascript" src="../script/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="../script/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../script/jquery.cookie-1.4.1.min.js"></script>
+  <script type="text/javascript" src="../script/plugins/datapicker/bootstrap-datepicker.js"></script>
+  <script type="text/javascript" src="../script/plugins/icheck/icheck.min.js"></script>
+  <script type="text/javascript" src="../script/jquery.tree.js"></script>
+  <script type="text/javascript" src="../script/control.js"></script>
+  <script type="text/javascript" src="../script/jquery.base64.js"></script>
+  <script type="text/javascript" src="../script/m3script.js"></script>
+
+</head>
+
+
+<body class="fixed-sidebar">
+
+
+  <header class="header">
+    <!-- logo -->
+    <a class="logo" href="../index.html">
+      <img src="../img/logo.png" alt="CLOUD"/>
+      <div class="logo-title">云&nbsp;端&nbsp;管&nbsp;理&nbsp;平&nbsp;台</div>
+    </a>
+
+    <div class="header-nav">
+
+
+      <!-- 右侧工具：用户、退出 -->
+    </div>
+    <div class="tools">
+      <!-- 退出 -->
+      <div class="user-logout">
+        <a href="../index.html">
+          <i class="fa fa-sign-out"></i>退出
+        </a>
+      </div>
+
+      <!-- 用户 -->
+      <div class="user-login">
+        <a href="userConfig.html">
+          <i class="fa fa-user"></i><span>admin</span>
+        </a>
+      </div>
+
+    </div>
+
+  </header>
+
+  <!-- 中间容器 -->
+  <div class="ui-container">
+    <div id="main">
+      <div class="header-banner">
+        <div class="banner-tab"><a href="netMonitor.html">网络监控</a></div>
+        <div class="banner-tab active">
+          <a href="myEquipments.html">我的设备</a>
+          <ul class="banner-block">
+            <a href="equipmentGroup.html"><li>设备组</li></a>
+            <a href="equipmentsUpdate.html"><li>固件升级</li></a>
+          </ul>
+        </div>
+        <div class="banner-tab">
+          <a href="wirelessConfig.html">无线配置</a>
+          <ul class="banner-block">
+            <a href="wirelessConfig.html"><li>SSID</li></a>
+          </ul>
+        </div>
+        <div class="banner-tab"><a href="inventory.html">Inventory</a></div>
+      </div>
+      <div class="main-content">
+        <div class="current-locate">
+          <label><i class="fa fa-home"></i>当前位置：</label>
+          <ul class="breadcrumb">
+            <li><a href="myEquipments.html">我的设备</a></li>
+            <li class="active">设备组</li>
+          </ul>
+        </div>
+        <div class="equipments-table w1000">
+          <div class="table-head">
+            <span>设备组</span>
+            <a href="createEquipmentGroup.html" class="pull-right">[&nbsp;+&nbsp;]</a>
+          </div>
+          <table class="table mytable table-hover table-many-words">
+            <thead>
+              <tr>
+                <th>状态</th>
+                <th>组名</th>
+                <th>组内设备</th>
+                <th>版本</th>
+                <th width="30%">升级进度</th>
+                <th class="text-center" width="15%">操作</th>
+              </tr>
+            </thead>
+            <tbody id="MyEquipTBody">
+             <!--  <tr>
+                <td>正常</td>
+                <td>abc</td>
+                <td>3AP 5LSW</td>
+                <td>AP1.01 LSW1.02</td>
+                <td>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                      60%
+                    </div>
+                  </div>
+                  <a href="javascript:void(0)" class="stop-progress">停止</a>
+                </td>
+                <td class="table-control">
+                  <a href="#">修改</a>
+                  <a href="#updateModal" data-toggle="modal">升级</a>
+                  <a href="#">删除</a>
+                </td>
+              </tr>
+              <tr>
+                <td>正常</td>
+                <td>def</td>
+                <td>10AP</td>
+                <td>AP1.01 LSW1.02</td>
+                <td>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                      60%
+                    </div>
+                  </div>
+                  <a href="javascript:void(0)" class="stop-progress">停止</a>
+                </td>
+                <td class="table-control">
+                  <a href="#">修改</a>
+                  <a href="#updateModal" data-toggle="modal">升级</a>
+                  <a href="#">删除</a>
+                </td>
+              </tr>
+              <tr>
+                <td>停用</td>
+                <td>1111</td>
+                <td>无</td>
+                <td>无</td>
+                <td>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%;">
+                      20%
+                    </div>
+                  </div>
+                  <a href="javascript:void(0)" class="stop-progress">停止</a>
+                </td>
+                <td class="table-control">
+                  <a href="#">修改</a>
+                  <a href="#updateModal" data-toggle="modal">升级</a>
+                  <a href="#">删除</a>
+                </td>
+              </tr>
+              <tr>
+                <td>正常</td>
+                <td>dddd</td>
+                <td>5LSW</td>
+                <td>无</td>
+                <td>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
+                      50%
+                    </div>
+                  </div>
+                  <a href="javascript:void(0)" class="stop-progress">停止</a>
+                </td>
+                <td class="table-control">
+                  <a href="#">修改</a>
+                  <a href="#updateModal" data-toggle="modal">升级</a>
+                  <a href="#">删除</a>
+                </td>
+              </tr> -->
+            </tbody>
+          </table>
+
+          <!--分页-->
+          <div class="page" >
+
+
+            <ul class="pagination">
+              <div id="pagination" class="paginate"></div>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal fade mymodal" id="updateModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">软件升级</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal">
+          <div class="form-part">
+            <div class="form-group">
+              <label class="control-label"><input type="checkbox" class="version-type ap-version">交换机</label>
+              <div class="controls">
+                <select class="form-control" disabled="disabled" id="apValue">
+                  <option>请选择版本</option>
+                  <option>AP1.01</option>
+                  <option>AP1.02</option>
+                  <option>AP1.03</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group" >
+              <label class="control-label"><input type="checkbox" class="version-type lsw-version">AP</label>
+              <div class="controls">
+                <select class="form-control" disabled="disabled" id="lswValue">
+                  <option>请选择版本</option>
+                  <option>LSW1.01</option>
+                  <option>LSW1.02</option>
+                  <option>LSW1.03</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <div class="btn-groups">
+          <input type="button" value="确&nbsp;&nbsp;认" class="btn btn-medium" data-dismiss="modal" id="updateConfirm">
+          <input type="button" value="取&nbsp;&nbsp;消" class="btn btn-medium btn-light w100" data-dismiss="modal" >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-bottom">
+  <div class="status pull-left">系统正常</div>
+  <div class="locate-time pull-right" id="showCurrentTime">2015-08-27 22:58</div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+  //show current tiem automatically
+  setInterval("showCurrentTime()", 1000); 
+  //get total counts of the equip group tables
+  //notice need to enter right url,but "www.baidu.com" is a just test
+  generateTablesCounts("www.baidu.com"); 
+});
+
+/**
+ * set table data by pageIndex and pageSize
+ */
+ function queryByPageIndexAndSetTableValues(pageIndex,pageSize){
+  var queryString="pageIndex="+pageIndex+"&pageSize="+pageSize;
+ // alert("[equipmentGroup.html]query string is "+queryString);
+  $.ajax({ 
+    type:"GET", 
+    url: "../json/equipGroupData.json?"+queryString, 
+    dataType:"json", 
+    contentType:"application/json",
+    beforeSend: function(xmlhttp){
+        //alert("request is "+request); 
+         //console.info("This is before send....");
+         var csrftoken=getValFromCookie('X-CSRFToken');
+         xmlhttp.setRequestHeader('X-CSRFToken',csrftoken);
+      }, 
+      success:function(data){ 
+          //tbody content
+          //alert("base64 "+$.base64.encode("encode this string"));
+          var tbodyContent="";
+          $.each(data.data, function(index, content)
+          { 
+            //iterate the array and construct the tbody content,
+            //base64 for version_ap
+            var version_ap_base64=$.base64.encode(content.version_ap);
+            var version_ap_equal_index=version_ap_base64.indexOf('=');
+            var version_ap_href_param=version_ap_base64.substring(0,version_ap_equal_index);
+           // alert(version_ap_href_param);
+            //base64 for version_switch
+            var version_switch_base64=$.base64.encode(content.version_ap);
+            var version_switch_equal_index=version_ap_base64.indexOf('=');
+            var version_switch_href_param=version_ap_base64.substring(0,version_switch_equal_index);
+
+            var hrefLocation="createEquipmentGroup.html?name="+content.name+"&subnet="+content.subnet+"&netmask="+content.netmask+"&version_ap="+version_ap_href_param+"&version_switch="+version_switch_href_param;
+            var status=(content.enable)?"正常":"停用";
+            
+            //alert("status is "+status);
+            // alert("equipmentGroup is"+hrefLocation);
+            tbodyContent+="<tr><td>"+status+"</td><td>"+content.name+"</td><td>AP:"+content.num_ap+" 交换机："+content.num_switch+"</td><td id=\"softVersion\"><span class=\"version-ap\">"+content.version_ap+"</span><span class=\"version-lsw\">"+content.version_switch+"</span></td>"+"<td><div class=\"progress hide\"><div class=\"progress-bar\" role=\"progressbar\" aria-valuenow=\"0\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: 0%;\">0%</div></div><a href=\"javascript:void(0)\" class=\"stop-progress hide\">停止</a></td><td class=\"table-control\"><a href="+hrefLocation+">修改</a><a href=\"#updateModal\" data-toggle=\"modal\" id=\"updateIcon\">升级</a><a href=\"javascript:void(0);\" onclick=\"deltr(this)\">删除</a></td></tr>";
+          });
+          $("#MyEquipTBody").empty();
+          $("#MyEquipTBody").append(tbodyContent);
+        },
+        error:function(a,b,c){
+            //let it pass ,in order to test app.
+            var errorMsg="get table data by ocurrs error,"+"a="+a+";b="+b+";c="+c;
+            alert(errorMsg);
+            //location.href = 'main/netMonitor.html';
+
+          } 
+        }); 
+}
+
+$('.version-type').on('ifToggled',function() {
+  var $this = $(this);
+  var $formControl = $this.closest('.form-group').find('.form-control');
+  if($this.is(':checked')) {
+    $formControl.removeAttr('disabled');
+  } else {
+    $formControl.attr('disabled','disabled');
+  }
+})
+
+$('#MyEquipTBody').on('click','#updateIcon',function() {
+  var $this = $(this);
+  var $pro = $this.closest('tr').find('.progress');
+  var $stop = $this.closest('tr').find('.stop-progress');
+  var $versionAp = $this.closest('tr').find('.version-ap');
+  var $versionLsw = $this.closest('tr').find('.version-lsw')
+  $('#updateConfirm').on('click',function() {
+    var $apValue = $('#apValue').val();
+    var $lswValue = $('#lswValue').val();
+    var $apVer = $('.ap-version');
+    var $lswVer = $('.lsw-version');
+    if($apVer.is(':checked') || $lswVer.is(':checked')){
+      $pro.removeClass('hide');
+      $stop.removeClass('hide');
+      $this.addClass('hide');
+    }
+    if($apVer.is(':checked')){
+      $versionAp.html($apValue);
+    }
+    if($lswVer.is(':checked')){
+      $versionLsw.html($lswVer);
+    }
+  })
+})
+
+$('#MyEquipTBody').on('click','.stop-progress',function() {
+  $this = $(this);
+  $updateIcon = $this.closest('tr').find('#updateIcon');
+  $updateIcon.removeClass('hide');
+  $this.addClass('hide');
+})
+</script>
+
+</body>
+
+</html>

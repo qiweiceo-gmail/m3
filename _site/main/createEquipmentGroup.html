@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- 启用360极速模式 -->
+    <meta name="renderer" content="webkit" />
+
+    <title>云端管理平台</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../css/font-awesome/css/font-awesome.css"/>
+    <link rel="stylesheet" href="../css/style.css"/>
+    <link rel="stylesheet" href="../css/plugins/datapicker/datepicker3.css"/>
+    <link rel="stylesheet" href="../css/main.css">
+
+    <script type="text/javascript" src="../script/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="../script/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../script/plugins/datapicker/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="../script/plugins/icheck/icheck.min.js"></script>
+    <script type="text/javascript" src="../script/jquery.tree.js"></script>
+    <script type="text/javascript" src="../script/control.js"></script>
+    <script type="text/javascript" src="../script/m3script.js"></script>
+    <script type="text/javascript" src="../script/jquery.query-2.1.7.js"></script>
+     <script type="text/javascript" src="../script/jquery.base64.js"></script>
+</head>
+
+
+  <body class="fixed-sidebar">
+
+    
+<header class="header">
+  <!-- logo -->
+  <a class="logo" href="../index.html">
+    <img src="../img/logo.png" alt="CLOUD"/>
+    <div class="logo-title">云&nbsp;端&nbsp;管&nbsp;理&nbsp;平&nbsp;台</div>
+  </a>
+
+  <div class="header-nav">
+    
+
+    <!-- 右侧工具：用户、退出 -->
+  </div>
+  <div class="tools">
+      <!-- 退出 -->
+      <div class="user-logout">
+        <a href="../index.html">
+          <i class="fa fa-sign-out"></i>退出
+        </a>
+      </div>
+
+      <!-- 用户 -->
+      <div class="user-login">
+        <a href="userConfig.html">
+          <i class="fa fa-user"></i><span>admin</span>
+        </a>
+      </div>
+
+    </div>
+
+</header>
+
+    <!-- 中间容器 -->
+    <div class="ui-container">
+      <div id="main">
+        <div class="header-banner">
+    <div class="banner-tab"><a href="netMonitor.html">网络监控</a></div>
+    <div class="banner-tab active">
+        <a href="myEquipments.html">我的设备</a>
+        <ul class="banner-block">
+            <a href="equipmentGroup.html"><li>设备组</li></a>
+            <a href="equipmentsUpdate.html"><li>固件升级</li></a>
+        </ul>
+    </div>
+    <div class="banner-tab">
+        <a href="wirelessConfig.html">无线配置</a>
+        <ul class="banner-block">
+            <a href="wirelessConfig.html"><li>SSID</li></a>
+        </ul>
+    </div>
+    <div class="banner-tab"><a href="inventory.html">Inventory</a></div>
+</div>
+<div class="main-content">
+    <div class="current-locate">
+        <label><i class="fa fa-home"></i>当前位置：</label>
+        <ul class="breadcrumb">
+            <li><a href="myEquipments.html">我的设备</a></li>
+            <li><a href="equipmentGroup.html">设备组</a></li>
+            <li class="active">添加设备组</li>
+        </ul>
+    </div>
+    <div class="create-equipments">
+        <div class="create-header">添加设备组</div>
+        <div class="create-body">
+            <form class="form-horizontal whole-form">
+                <div class="form-part form-big">
+                    <div class="form-group">
+                        <label class="control-label"><input type="radio" name="name-or-ip" checked="checked" id="groupChoose">设备名称匹配</label>
+                        <div class="controls">
+                            <input type="text" class="form-control" id="equipGroupName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label"><input type="radio" name="name-or-ip">设备IP</label>
+                        <div class="controls mul-input">
+                            <input type="text" id="subnet" class="form-control" disabled="disabled">
+                            <label class="control-label back-input">子网掩码</label>
+                            <input id="netmask" type="text" class="form-control" disabled="disabled">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-part form-big">
+                  <div class="form-group">
+                    <label class="control-label">交换机版本</label>
+                    <div class="controls">
+                      <select class="form-control" id="version_switch">
+                        <option>请选择版本</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label">AP版本</label>
+                    <div class="controls">
+                      <select class="form-control" id="version_ap">
+                        <option>请选择版本</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="btn-groups">
+                      <input type="button" class="btn" value="添&emsp;加">
+                      <input type="button" class="btn" value="取&emsp;消">
+                  </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#groupChoose').on('ifToggled',function(){
+        var $this = $(this);
+        var $formGroup = $this.closest('.form-group');
+        if($this.is(':checked')) {
+            $formGroup.find('.form-control').removeAttr('disabled');
+            $formGroup.next('.form-group').find('.form-control').attr('disabled','true');
+        }else {
+            $formGroup.find('.form-control').attr('disabled','true');
+            $formGroup.next('.form-group').find('.form-control').removeAttr('disabled');
+        }
+        
+    })
+</script>
+      </div>
+    </div>
+    
+
+
+<div class="page-bottom">
+    <div class="status pull-left">系统正常</div>
+    <div class="locate-time pull-right" id="showCurrentTime">2015-08-27 22:58</div>
+</div>
+<script type="text/javascript">
+$(function(){
+  //show current tiem automatically
+  setInterval("showCurrentTime()", 1000); 
+  //get parameter value from GET Request
+   var equipGroupName = $.query.get('name');
+   var subnet = $.query.get('subnet');
+   var netmask = $.query.get('netmask');
+   var version_ap=$.query.get('version_ap');
+   if(version_ap != ""){
+    //alert("ap not null.");
+   version_ap = $.base64.decode(version_ap+"=");
+   }
+
+   //alert("version_ap is"+version_ap);
+   var version_switch = $.query.get('version_switch');
+    if(version_switch != ""){
+      version_switch=$.base64.decode(version_switch+"=");
+    }
+  // alert(version_switch);
+   
+   $("#equipGroupName").val(equipGroupName);
+   $("#subnet").val(subnet);
+   $("#netmask").val(netmask);
+   if(version_switch != ""){
+   $("#version_switch").empty();
+   $("#version_switch").append($("<option>"+version_switch+"</option>"));
+   }
+   if(version_ap != ""){
+   $("#version_ap").empty();
+   $("#version_ap").append($("<option>"+version_ap+"</option>"));
+   }
+   
+   //alert("equipGroupName is "+equipGroupName);
+});
+
+
+$('#groupChoose').on('ifToggled',function(){
+    var $this = $(this);
+    var $formGroup = $this.closest('.form-group');
+    if($this.is(':checked')) {
+        $formGroup.find('.form-control').removeAttr('disabled');
+        $formGroup.next('.form-group').find('.form-control').attr('disabled','true');
+    }else {
+        $formGroup.find('.form-control').attr('disabled','true');
+        $formGroup.next('.form-group').find('.form-control').removeAttr('disabled');
+    }
+    
+})
+</script>
+</body>
+
+</html>
